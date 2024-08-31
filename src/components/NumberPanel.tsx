@@ -7,7 +7,11 @@ export const NumberPanel = ({
 }: SetPropsType): React.JSX.Element => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
-    setFunction(target.value);
+    setFunction((prev) => {
+      if (prev === "0") return target.value
+      return prev + target.value
+      
+    });
   };
   return (
     <section className="grid-in-numbers outline outline-1 grid grid-cols-3 grid-rows-4">

@@ -8,7 +8,7 @@ import { UtilitiesPanel } from './components/UtilitiesPanel'
 function App() {
   const [output, setOutput] = useState<string>("0")
   return (
-   <main className='grid grid-areas-layout grid-cols-layout grid-rows-layout h-full'>
+   <main className='grid grid-areas-layout grid-cols-layout grid-rows-layout h-dvh w-dvw p-4'>
       <OutputPanel output={output} />
       <NumberPanel setFunction={setOutput} />
       <OperationsPanel />
