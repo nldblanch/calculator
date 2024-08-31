@@ -8,15 +8,15 @@ export const NumberPanel = ({
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
     setFunction((prev) => {
-      if (prev === "0") return target.value
-      return prev + target.value
-      
+      if (prev === "0") return target.value;      
+      if (prev.length < 9) return prev + target.value;
+      return prev
     });
   };
   return (
     <section className="grid-in-numbers outline outline-1 grid grid-cols-3 grid-rows-4">
       <button
-        className="bg-slate-700 rounded-full aspect-square text-white text-3xl"
+        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-3xl "
         type="button"
         value={7}
         onClick={handleClick}
@@ -24,7 +24,7 @@ export const NumberPanel = ({
         7
       </button>
       <button
-        className="bg-slate-700 rounded-full aspect-square text-white text-3xl"
+        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-3xl"
         type="button"
         value={8}
         onClick={handleClick}
@@ -32,7 +32,7 @@ export const NumberPanel = ({
         8
       </button>
       <button
-        className="bg-slate-700 rounded-full aspect-square text-white text-3xl"
+        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-3xl"
         type="button"
         value={9}
         onClick={handleClick}
@@ -40,7 +40,7 @@ export const NumberPanel = ({
         9
       </button>
       <button
-        className="bg-slate-700 rounded-full aspect-square text-white text-3xl"
+        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-3xl"
         type="button"
         value={4}
         onClick={handleClick}
@@ -48,7 +48,7 @@ export const NumberPanel = ({
         4
       </button>
       <button
-        className="bg-slate-700 rounded-full aspect-square text-white text-3xl"
+        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-3xl"
         type="button"
         value={5}
         onClick={handleClick}
@@ -56,7 +56,7 @@ export const NumberPanel = ({
         5
       </button>
       <button
-        className="bg-slate-700 rounded-full aspect-square text-white text-3xl"
+        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-3xl"
         type="button"
         value={6}
         onClick={handleClick}
@@ -64,7 +64,7 @@ export const NumberPanel = ({
         6
       </button>
       <button
-        className="bg-slate-700 rounded-full aspect-square text-white text-3xl"
+        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-3xl"
         type="button"
         value={1}
         onClick={handleClick}
@@ -72,7 +72,7 @@ export const NumberPanel = ({
         1
       </button>
       <button
-        className="bg-slate-700 rounded-full aspect-square text-white text-3xl"
+        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-3xl"
         type="button"
         value={2}
         onClick={handleClick}
@@ -80,7 +80,7 @@ export const NumberPanel = ({
         2
       </button>
       <button
-        className="bg-slate-700 rounded-full aspect-square text-white text-3xl"
+        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-3xl"
         type="button"
         value={3}
         onClick={handleClick}
@@ -88,14 +88,14 @@ export const NumberPanel = ({
         3
       </button>
       <button
-        className="bg-slate-700 rounded-full text-white text-3xl col-span-2"
+        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full text-white text-3xl col-span-2"
         type="button"
         value={0}
       >
         <p className="w-1/2">0</p>
       </button>
       <button
-        className="bg-slate-700 rounded-full aspect-square text-white text-3xl"
+        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-3xl"
         type="button"
         value={"."}
       >
