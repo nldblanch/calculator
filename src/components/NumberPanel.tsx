@@ -1,15 +1,20 @@
 type SetPropsType = {
   setOutput: React.Dispatch<React.SetStateAction<string>>,
-  memory: string;
+  setOverwrite: React.Dispatch<React.SetStateAction<boolean>>,
+  memory: string,
+  overwrite: boolean
 };
 
 export const NumberPanel = ({
-  setOutput, memory
+  setOutput, memory, overwrite, setOverwrite
 }: SetPropsType): React.JSX.Element => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
     setOutput((prev) => {
-      if (prev === memory) return target.value;      
+      if (overwrite === true) {
+        setOverwrite(false)
+        return target.value
+      };      
       if (prev.length < 9) return prev + target.value;
       return prev
     });

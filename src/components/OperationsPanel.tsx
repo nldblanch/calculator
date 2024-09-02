@@ -4,22 +4,26 @@ import { add, divide, multiply, subtract } from "../utils/basicOperations";
 type SetPropsType = {
   setOutput: React.Dispatch<React.SetStateAction<string>>;
   setMemory: React.Dispatch<React.SetStateAction<string>>;
+  setOverwrite: React.Dispatch<React.SetStateAction<boolean>>;
   memory: string;
   output: string;
 };
 export const OperationsPanel = ({
   setOutput,
   setMemory,
+  setOverwrite,
   memory,
   output,
 }: SetPropsType): React.JSX.Element => {
   const [operation, setOperation] = useState<string>("");
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
+    setOverwrite(true)
     setOperation(target.value);
     setMemory(output);
   };
   const handleEquals = () => {
+    setOverwrite(true)
     switch (operation) {
       case "+":
         setOutput(add(memory, output));
@@ -28,7 +32,8 @@ export const OperationsPanel = ({
         setOutput(subtract(memory, output));
         break;
       case "/":
-        setOutput(divide(memory, output));
+        if (output === "0") setOutput("Error");
+        else setOutput(divide(memory, output));
         break;
       case "*":
         setOutput(multiply(memory, output));
@@ -42,6 +47,7 @@ export const OperationsPanel = ({
         type="button"
         value={"/"}
         onClick={handleClick}
+        onFocus={() => console.log("focus")}
       >
         /
       </button>
