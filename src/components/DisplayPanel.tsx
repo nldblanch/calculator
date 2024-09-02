@@ -1,7 +1,7 @@
-type Output = {
+type Display = {
     output: string
 }
-export const OutputPanel = ({output}:Output): React.JSX.Element => {    
+export const DisplayPanel = ({output}:Display): React.JSX.Element => {    
     const displayValue = output.split('').map((number, index) => {        
       return (index % 3 === 0 && index > 1) ? "," + number : number
     }).join('')

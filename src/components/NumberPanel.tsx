@@ -1,14 +1,15 @@
 type SetPropsType = {
-  setFunction: React.Dispatch<React.SetStateAction<string>>;
+  setOutput: React.Dispatch<React.SetStateAction<string>>,
+  memory: string;
 };
 
 export const NumberPanel = ({
-  setFunction,
+  setOutput, memory
 }: SetPropsType): React.JSX.Element => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
-    setFunction((prev) => {
-      if (prev === "0") return target.value;      
+    setOutput((prev) => {
+      if (prev === memory) return target.value;      
       if (prev.length < 9) return prev + target.value;
       return prev
     });

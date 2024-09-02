@@ -1,17 +1,18 @@
 
 import { useState } from 'react'
 import './App.css'
-import {NumberPanel} from "./components/NumberPanel"
-import { OperationsPanel } from './components/OperationsPanel'
-import { OutputPanel } from './components/OutputPanel'
+import { DisplayPanel } from './components/DisplayPanel'
 import { UtilitiesPanel } from './components/UtilitiesPanel'
+import { NumberPanel } from './components/NumberPanel'
+import { OperationsPanel } from './components/OperationsPanel'
 function App() {
   const [output, setOutput] = useState<string>("0")
+  const [memory, setMemory] = useState<string>("0")
   return (
    <main className='bg-zinc-950 grid grid-areas-layout grid-cols-layout grid-rows-layout h-dvh w-dvw p-4'>
-      <OutputPanel output={output} />
-      <NumberPanel setFunction={setOutput} />
-      <OperationsPanel />
+      <DisplayPanel output={output} />
+      <NumberPanel setOutput={setOutput} memory={memory} />
+      <OperationsPanel output={output} setOutput={setOutput} memory={memory} setMemory={setMemory} />
       <UtilitiesPanel />
    </main>
   )
