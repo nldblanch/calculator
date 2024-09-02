@@ -1,10 +1,10 @@
+import { formatDisplay } from "../utils/displayFormatter";
+
 type Display = {
     output: string
 }
 export const DisplayPanel = ({output}:Display): React.JSX.Element => {    
-    const displayValue = output.split('').map((number, index) => {        
-      return (index % 3 === 0 && index > 1) ? "," + number : number
-    }).join('')
+    const displayValue:string = formatDisplay(output)
     let style:string = "text-right absolute w-full bottom-0 right-0 font-extralight text-white pr-2 pb-4"
     if (output.length <= 6) style += " text-6xl"
     if (output.length === 7) style += " text-5xl"
