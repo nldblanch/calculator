@@ -14,7 +14,6 @@ function App() {
   };
   const numberPanelProps = {
     setOutput,
-    memory,
     overwrite,
     setOverwrite,
   };
@@ -28,7 +27,7 @@ function App() {
   const utilitiesPanelProps = {
     setOutput,
     setMemory,
-    setOverwrite
+    setOverwrite,
   };
 
   return (

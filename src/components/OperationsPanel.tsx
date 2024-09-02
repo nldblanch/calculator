@@ -18,12 +18,12 @@ export const OperationsPanel = ({
   const [operation, setOperation] = useState<string>("");
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
-    setOverwrite(true)
+    setOverwrite(true);
     setOperation(target.value);
     setMemory(output);
   };
   const handleEquals = () => {
-    setOverwrite(true)
+    setOverwrite(true);
     switch (operation) {
       case "+":
         setOutput(add(memory, output));

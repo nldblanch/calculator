@@ -7,11 +7,11 @@ export const subtract = (a: string, b: string): string => {
 };
 
 export const multiply = (a: string, b: string): string => {
-    return String(Number(a) * Number(b))
-}
+  return String(Number(a) * Number(b));
+};
 export const divide = (a: string, b: string): string => {
-    return String(Number(a) / Number(b))
-}
+  return String(Number(a) / Number(b));
+};
 
 //   const person: Readonly<{ name: string; age: number }> = { name: 'Alice', age: 30 };
 // // person.age = 31; // Error: Cannot assign to 'age' because it is a read-only property
