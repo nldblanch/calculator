@@ -9,7 +9,7 @@ function App() {
   const [output, setOutput] = useState<string>("0")
   const [memory, setMemory] = useState<string>("0")
   return (
-   <main className='bg-zinc-950 grid grid-areas-layout grid-cols-layout grid-rows-layout h-dvh w-dvw p-4'>
+   <main className='bg-zinc-950 grid grid-areas-layout grid-cols-layout grid-rows-layout grid-flow-row h-dvh w-dvw p-4 pb-8'>
       <DisplayPanel output={output} />
       <NumberPanel setOutput={setOutput} memory={memory} />
       <OperationsPanel output={output} setOutput={setOutput} memory={memory} setMemory={setMemory} />

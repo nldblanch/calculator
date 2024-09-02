@@ -38,7 +38,7 @@ export const OperationsPanel = ({
   return (
     <section className="grid-in-operations outline outline-1 grid grid-flow-col grid-rows-5 grid-cols-1">
       <button
-        className="bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-3xl"
+        className="bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center"
         type="button"
         value={"/"}
         onClick={handleClick}
@@ -46,7 +46,7 @@ export const OperationsPanel = ({
         /
       </button>
       <button
-        className="bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-3xl"
+        className="bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center"
         type="button"
         value={"*"}
         onClick={handleClick}
@@ -54,7 +54,7 @@ export const OperationsPanel = ({
         x
       </button>
       <button
-        className="bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-3xl"
+        className="bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center"
         type="button"
         value={"-"}
         onClick={handleClick}
@@ -62,7 +62,7 @@ export const OperationsPanel = ({
         -
       </button>
       <button
-        className="bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-3xl"
+        className="bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center"
         type="button"
         value={"+"}
         onClick={handleClick}
@@ -70,7 +70,7 @@ export const OperationsPanel = ({
         +
       </button>
       <button
-        className="bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-3xl"
+        className="bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center"
         type="button"
         value={"="}
         onClick={handleEquals}

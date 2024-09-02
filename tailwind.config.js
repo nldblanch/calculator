@@ -15,18 +15,21 @@ export default {
       '7xl': "8rem"
     },
     extend: {
+      aspectRatio: {
+        '2/1': '2 / 1',
+      },
       gridTemplateAreas: {
         'layout': [
           'output output',
           'utilities operations',
-          'numbers  operations',
+          'numbers operations'
         ],
       },
       gridTemplateColumns: {
-        'layout': '3fr 1fr',
+        'layout': '6fr 2fr',
       },
       gridTemplateRows: {
-        'layout': `2fr 1fr 4fr`,
+        'layout': `5fr 2fr 8fr`,
       },
     },
   },

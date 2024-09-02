@@ -11,7 +11,7 @@ export const DisplayPanel = ({output}:Display): React.JSX.Element => {
     if (output.length === 8) style += " text-4xl"
     if (output.length === 9) style += " text-3xl"
     return (
-      <section className="grid-in-output relative outline outline-1 grid grid-flow-col grid-rows-5 grid-cols-1">
+      <section className="grid-in-output relative">
           <p className={style}>{displayValue}</p>
       </section>
   );
