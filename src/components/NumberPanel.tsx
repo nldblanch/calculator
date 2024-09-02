@@ -92,6 +92,8 @@ export const NumberPanel = ({
         className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full text-white text-3xl col-span-2"
         type="button"
         value={0}
+        onClick={handleClick}
+
       >
         <p className="w-1/2">0</p>
       </button>
