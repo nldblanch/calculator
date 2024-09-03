@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { add, divide, multiply, subtract } from "../utils/basicOperations";
 type MemoryStateType = {
-  num1: number;
-  num2: number;
+  num1: string;
+  num2: string;
+  index: number;
 };
 type SetPropsType = {
   setOutput: React.Dispatch<React.SetStateAction<string>>;
@@ -26,6 +27,9 @@ export const OperationsPanel = ({
     const target = e.target as HTMLButtonElement;
     setOverwrite(true);
     setOperation(target.value);
+    setMemory((prev) => {
+      return { ...prev, index: 2 };
+    });
   };
   const handleEquals = () => {
     setOverwrite(true);
@@ -34,29 +38,45 @@ export const OperationsPanel = ({
     switch (operation) {
       case "+":
         setMemory((prev) => {
-          if (!memory.num2) return { ...prev };
-          return { ...prev, num1: add(num1, num2) };
+          if (memory.num2 === "NaN") return { ...prev };
+          return {
+            ...prev,
+            num1: String(add(Number(num1), Number(num2))),
+            index: 1,
+          };
         });
         break;
       case "-":
         setMemory((prev) => {
-          if (!memory.num2) return { ...prev };
-          return { ...prev, num1: subtract(num1, num2) };
+          if (memory.num2 === "NaN") return { ...prev };
+          return {
+            ...prev,
+            num1: String(subtract(Number(num1), Number(num2))),
+            index: 1,
+          };
         });
         break;
       case "/":
-        if (num2 === 0) setOutput("Error");
+        if (num2 === "0") setOutput("Error");
         else {
           setMemory((prev) => {
-            if (!memory.num2) return { ...prev };
-            return { ...prev, num1: divide(num1, num2) };
+            if (memory.num2 === "NaN") return { ...prev };
+            return {
+              ...prev,
+              num1: String(divide(Number(num1), Number(num2))),
+              index: 1,
+            };
           });
         }
         break;
       case "*":
         setMemory((prev) => {
-          if (!memory.num2) return { ...prev };
-          return { ...prev, num1: multiply(num1, num2) };
+          if (memory.num2 === "NaN") return { ...prev };
+          return {
+            ...prev,
+            num1: String(multiply(Number(num1), Number(num2))),
+            index: 1,
+          };
         });
         break;
     }

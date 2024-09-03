@@ -5,24 +5,45 @@ import { UtilitiesPanel } from "./components/UtilitiesPanel";
 import { NumberPanel } from "./components/NumberPanel";
 import { OperationsPanel } from "./components/OperationsPanel";
 type MemoryStateType = {
-  num1: number;
-  num2: number;
+  num1: string;
+  num2: string;
+  index: number;
 };
 function App() {
   const [output, setOutput] = useState<string>("0");
-  const [memory, setMemory] = useState<MemoryStateType>({ num1: 0, num2: NaN });
+  const [memory, setMemory] = useState<MemoryStateType>({
+    num1: "0",
+    num2: "NaN",
+    index: 1
+  });
   const [overwrite, setOverwrite] = useState<boolean>(true);
   const [operationActive, setOperationActive] = useState<boolean>(false);
   useEffect(() => {
     console.log(memory, operationActive);
-    if (operationActive && memory.num2 === 0) {
-      setOutput(String(memory.num2));      
-    } else if (operationActive && !memory.num2) {
-      setOutput(String(memory.num1));      
+    setOutput((prev) => prev + ".0");
+    const organiseInput = (index: number) => {
+      switch (index) {
+        case 1:
+          setOutput(() => {
+            return String(memory.num1);
+          });
+          break;
+        case 2:
+          setOutput(() => {
+            return String(memory.num2);
+          });
+          break;
+      }
+    };
+
+    if (operationActive && memory.num2 === "0") {
+      organiseInput(2);
+    } else if (operationActive && memory.num2 === "NaN") {
+      organiseInput(1);
     } else if (operationActive) {
-      setOutput(String(memory.num2));      
+      organiseInput(2);
     } else {
-      setOutput(String(memory.num1));      
+      organiseInput(1);
     }
   }, [memory]);
 
@@ -30,7 +51,6 @@ function App() {
     output,
   };
   const numberPanelProps = {
-    setOutput,
     overwrite,
     setOverwrite,
     setMemory,
@@ -42,7 +62,7 @@ function App() {
     setMemory,
     setOverwrite,
     setOperationActive,
-    operationActive
+    operationActive,
   };
   const utilitiesPanelProps = {
     setOutput,
@@ -50,7 +70,7 @@ function App() {
     setOverwrite,
     setOperationActive,
     memory,
-    output
+    output,
   };
 
   return (

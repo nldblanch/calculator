@@ -1,6 +1,7 @@
 type MemoryStateType = {
-  num1: number;
-  num2: number;
+  num1: string;
+  num2: string;
+  index: number;
 };
 type SetPropsType = {
   setOutput: React.Dispatch<React.SetStateAction<string>>;
@@ -27,7 +28,7 @@ export const UtilitiesPanel = ({
         value={"C"}
         onClick={() => {
           setOutput("0");
-          setMemory({ num1: 0, num2: NaN });
+          setMemory({ num1: "0", num2: "NaN", index: 1 });
           setOverwrite(true);
           setOperationActive(false);
         }}
@@ -48,11 +49,11 @@ export const UtilitiesPanel = ({
         onClick={() => {
           if (output === String(memory.num1)) {
             setMemory((prev) => {
-              return {...prev, num1: memory.num1 / 100}
+              return {...prev, num1: String(Number(memory.num1) / 100)}
             })
           } else {
             setMemory((prev) => {
-              return {...prev, num2: memory.num2 / 100}
+              return {...prev, num2: String(Number(memory.num2) / 100)}
             })
           }
         }}

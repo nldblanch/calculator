@@ -1,11 +1,10 @@
-
 type MemoryStateType = {
-  num1: number;
-  num2: number;
+  num1: string;
+  num2: string;
+  index: number;
 };
 
 type SetPropsType = {
-  setOutput: React.Dispatch<React.SetStateAction<string>>;
   setOverwrite: React.Dispatch<React.SetStateAction<boolean>>;
   setMemory: React.Dispatch<React.SetStateAction<MemoryStateType>>;
   overwrite: boolean;
@@ -16,19 +15,24 @@ export const NumberPanel = ({
   overwrite,
   setOverwrite,
   setMemory,
-  operationActive
+  operationActive,
 }: SetPropsType): React.JSX.Element => {
-  
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
-    const value = Number(target.value) || 0;
+    const value = target.value || "0";
     setMemory((prev) => {
-      if (operationActive && overwrite) return {...prev, num2: value}
-      else if (operationActive) return { ...prev, num2: Number(String(prev.num2) + String(value)) }
-      else if (overwrite) return { ...prev, num1: value }
-      else return { ...prev, num1: Number(String(prev.num1) + String(value)) };
-      });
-      setOverwrite(false)
+      if (operationActive && overwrite) return { ...prev, num2: value };
+      else if (operationActive) {
+        const num2 = prev.num2 + value;
+        return { ...prev, num2 };
+      } else if (overwrite) return { ...prev, num1: value };
+      else {        
+        const num1 = prev.num1 + value;
+        return { ...prev, num1 };
+      }
+    });
+
+    setOverwrite(false);
   };
   return (
     <section className="grid-in-numbers outline outline-1 grid grid-cols-3 grid-rows-4">
@@ -116,6 +120,11 @@ export const NumberPanel = ({
         className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-2xl flex justify-center"
         type="button"
         value={"."}
+        onClick={() => {
+          setMemory((prev) => {
+            return prev.index === 1 ? {...prev, num1: prev.num1 + "."} : {...prev, num2: prev.num2 + "."} 
+          })
+        }}
       >
         .
       </button>
