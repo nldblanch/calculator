@@ -34,11 +34,13 @@ export const OperationsPanel = ({
     switch (operation) {
       case "+":
         setMemory((prev) => {
+          if (!memory.num2) return { ...prev };
           return { ...prev, num1: add(num1, num2) };
         });
         break;
       case "-":
         setMemory((prev) => {
+          if (!memory.num2) return { ...prev };
           return { ...prev, num1: subtract(num1, num2) };
         });
         break;
@@ -46,12 +48,14 @@ export const OperationsPanel = ({
         if (num2 === 0) setOutput("Error");
         else {
           setMemory((prev) => {
+            if (!memory.num2) return { ...prev };
             return { ...prev, num1: divide(num1, num2) };
           });
         }
         break;
       case "*":
         setMemory((prev) => {
+          if (!memory.num2) return { ...prev };
           return { ...prev, num1: multiply(num1, num2) };
         });
         break;
@@ -60,7 +64,12 @@ export const OperationsPanel = ({
   return (
     <section className="grid-in-operations outline outline-1 grid grid-flow-col grid-rows-5 grid-cols-1">
       <button
-        className={"bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center transition-colors duration-300" + (operationActive && operation === "/" ? " bg-white text-orange-500" : "")}
+        className={
+          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center transition-colors duration-300" +
+          (operationActive && operation === "/"
+            ? " bg-white text-orange-500"
+            : "")
+        }
         type="button"
         value={"/"}
         onClick={handleClick}
@@ -69,7 +78,12 @@ export const OperationsPanel = ({
         /
       </button>
       <button
-        className={"bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center transition-colors duration-300" + (operationActive && operation === "*" ? " bg-white text-orange-500" : "")}
+        className={
+          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center transition-colors duration-300" +
+          (operationActive && operation === "*"
+            ? " bg-white text-orange-500"
+            : "")
+        }
         type="button"
         value={"*"}
         onClick={handleClick}
@@ -78,7 +92,12 @@ export const OperationsPanel = ({
         x
       </button>
       <button
-        className={"bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center transition-colors duration-300" + (operationActive && operation === "-" ? " bg-white text-orange-500" : "")}
+        className={
+          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center transition-colors duration-300" +
+          (operationActive && operation === "-"
+            ? " bg-white text-orange-500"
+            : "")
+        }
         type="button"
         value={"-"}
         onClick={handleClick}
@@ -87,7 +106,12 @@ export const OperationsPanel = ({
         -
       </button>
       <button
-        className={"bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center transition-colors duration-300" + (operationActive && operation === "+" ? " bg-white text-orange-500" : "")}
+        className={
+          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center transition-colors duration-300" +
+          (operationActive && operation === "+"
+            ? " bg-white text-orange-500"
+            : "")
+        }
         type="button"
         value={"+"}
         onClick={handleClick}
