@@ -10,14 +10,12 @@ type SetPropsType = {
   setMemory: React.Dispatch<React.SetStateAction<MemoryStateType>>;
   overwrite: boolean;
   operationActive: boolean;
-  memory: MemoryStateType;
 };
 
 export const NumberPanel = ({
   overwrite,
   setOverwrite,
   setMemory,
-  memory,
   operationActive
 }: SetPropsType): React.JSX.Element => {
   
