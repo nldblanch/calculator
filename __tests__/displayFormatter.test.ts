@@ -31,4 +31,12 @@ describe("displayFormat", () => {
     //assert
     expect(actual).toBe("1,234,567")
   })
+  it("does not format a number with a decimal point", () => {
+    //arrange
+    const number:string = "1.23"
+    //act
+    const actual:string = formatDisplay(number)
+    //assert
+    expect(actual).toBe("1.23")
+  })
 })

@@ -1,4 +1,5 @@
 export const formatDisplay = (number: string): string => {
+  if (number.includes(".")) return number
   const output = number
     .split("")
     .reverse()
