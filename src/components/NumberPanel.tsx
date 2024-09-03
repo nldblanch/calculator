@@ -1,24 +1,36 @@
+
+type MemoryStateType = {
+  num1: number;
+  num2: number;
+};
+
 type SetPropsType = {
   setOutput: React.Dispatch<React.SetStateAction<string>>;
   setOverwrite: React.Dispatch<React.SetStateAction<boolean>>;
+  setMemory: React.Dispatch<React.SetStateAction<MemoryStateType>>;
   overwrite: boolean;
+  operationActive: boolean;
+  memory: MemoryStateType;
 };
 
 export const NumberPanel = ({
-  setOutput,
   overwrite,
   setOverwrite,
+  setMemory,
+  memory,
+  operationActive
 }: SetPropsType): React.JSX.Element => {
+  
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
-    setOutput((prev) => {
-      if (overwrite === true) {
-        setOverwrite(false);
-        return target.value;
-      }
-      if (prev.length < 9) return prev + target.value;
-      return prev;
-    });
+    const value = Number(target.value);
+    setMemory((prev) => {
+      if (operationActive && memory.num2 === 0) return {...prev, num2: value}
+      else if (operationActive && memory.num2 !== 0) return { ...prev, num2: Number(String(prev.num2) + String(value)) }
+      else if (overwrite) return { ...prev, num1: value }
+      else return { ...prev, num1: Number(String(prev.num1) + String(value)) };
+      });
+      setOverwrite(false)
   };
   return (
     <section className="grid-in-numbers outline outline-1 grid grid-cols-3 grid-rows-4">

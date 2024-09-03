@@ -1,13 +1,19 @@
+type MemoryStateType = {
+  num1:number;
+  num2:number;
+}
 type SetPropsType = {
   setOutput: React.Dispatch<React.SetStateAction<string>>;
-  setMemory: React.Dispatch<React.SetStateAction<string>>;
+  setMemory: React.Dispatch<React.SetStateAction<MemoryStateType>>;
   setOverwrite: React.Dispatch<React.SetStateAction<boolean>>;
+  setOperationActive: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const UtilitiesPanel = ({
   setOutput,
   setMemory,
   setOverwrite,
+  setOperationActive
 }: SetPropsType): React.JSX.Element => {
   return (
     <section className="grid-in-utilities outline outline-1 grid grid-flow-row grid-rows-1 grid-cols-3">
@@ -17,8 +23,9 @@ export const UtilitiesPanel = ({
         value={"C"}
         onClick={() => {
           setOutput("0");
-          setMemory("0");
+          setMemory({num1: 0, num2: 0});
           setOverwrite(true);
+          setOperationActive(false)
         }}
       >
         C
