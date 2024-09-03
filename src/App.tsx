@@ -42,6 +42,7 @@ function App() {
     setMemory,
     setOverwrite,
     setOperationActive,
+    operationActive
   };
   const utilitiesPanelProps = {
     setOutput,
