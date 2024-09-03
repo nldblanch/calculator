@@ -25,8 +25,8 @@ export const NumberPanel = ({
     const target = e.target as HTMLButtonElement;
     const value = Number(target.value) || 0;
     setMemory((prev) => {
-      if (operationActive && !memory.num2) return {...prev, num2: value}
-      else if (operationActive && memory.num2) return { ...prev, num2: Number(String(prev.num2) + String(value)) }
+      if (operationActive && overwrite) return {...prev, num2: value}
+      else if (operationActive) return { ...prev, num2: Number(String(prev.num2) + String(value)) }
       else if (overwrite) return { ...prev, num1: value }
       else return { ...prev, num1: Number(String(prev.num1) + String(value)) };
       });
