@@ -49,6 +49,8 @@ function App() {
     setMemory,
     setOverwrite,
     setOperationActive,
+    memory,
+    output
   };
 
   return (
