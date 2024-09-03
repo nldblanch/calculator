@@ -23,7 +23,7 @@ export const UtilitiesPanel = ({
         value={"C"}
         onClick={() => {
           setOutput("0");
-          setMemory({num1: 0, num2: 0});
+          setMemory({num1: 0, num2: NaN});
           setOverwrite(true);
           setOperationActive(false)
         }}

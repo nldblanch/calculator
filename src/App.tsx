@@ -10,12 +10,14 @@ type MemoryStateType = {
 };
 function App() {
   const [output, setOutput] = useState<string>("0");
-  const [memory, setMemory] = useState<MemoryStateType>({ num1: 0, num2: 0 });
+  const [memory, setMemory] = useState<MemoryStateType>({ num1: 0, num2: NaN });
   const [overwrite, setOverwrite] = useState<boolean>(true);
   const [operationActive, setOperationActive] = useState<boolean>(false);
   useEffect(() => {
     console.log(memory, operationActive);
     if (operationActive && memory.num2 === 0) {
+      setOutput(String(memory.num2));      
+    } else if (operationActive && !memory.num2) {
       setOutput(String(memory.num1));      
     } else if (operationActive) {
       setOutput(String(memory.num2));      

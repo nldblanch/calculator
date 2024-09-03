@@ -23,10 +23,10 @@ export const NumberPanel = ({
   
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
-    const value = Number(target.value);
+    const value = Number(target.value) || 0;
     setMemory((prev) => {
-      if (operationActive && memory.num2 === 0) return {...prev, num2: value}
-      else if (operationActive && memory.num2 !== 0) return { ...prev, num2: Number(String(prev.num2) + String(value)) }
+      if (operationActive && !memory.num2) return {...prev, num2: value}
+      else if (operationActive && memory.num2) return { ...prev, num2: Number(String(prev.num2) + String(value)) }
       else if (overwrite) return { ...prev, num1: value }
       else return { ...prev, num1: Number(String(prev.num1) + String(value)) };
       });
