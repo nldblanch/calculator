@@ -14,11 +14,12 @@ function App() {
   const [memory, setMemory] = useState<MemoryStateType>({
     num1: "0",
     num2: "NaN",
-    index: 1
+    index: 1,
   });
   const [overwrite, setOverwrite] = useState<boolean>(true);
   const [operationActive, setOperationActive] = useState<boolean>(false);
   useEffect(() => {
+    // console.log(overwrite)
     console.log(memory, operationActive);
     setOutput((prev) => prev + ".0");
     const organiseInput = (index: number) => {
@@ -45,7 +46,8 @@ function App() {
     } else {
       organiseInput(1);
     }
-  }, [memory]);
+    
+  }, [memory, overwrite]);
 
   const displayPanelProps = {
     output,
@@ -74,7 +76,9 @@ function App() {
   };
 
   return (
-    <main className="bg-zinc-950 grid grid-areas-layout grid-cols-layout grid-rows-layout grid-flow-row h-dvh w-dvw p-4 pb-8">
+    <main
+      className="bg-zinc-950 grid grid-areas-layout grid-cols-layout grid-rows-layout grid-flow-row h-dvh w-dvw p-4 pb-8"
+    >
       <DisplayPanel {...displayPanelProps} />
       <NumberPanel {...numberPanelProps} />
       <OperationsPanel {...operationsPanelProps} />

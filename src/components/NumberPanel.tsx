@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 type MemoryStateType = {
   num1: string;
   num2: string;
@@ -20,20 +22,39 @@ export const NumberPanel = ({
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
     const value = target.value || "0";
+    handleNumberKeys(value);
+    setOverwrite(false);
+  };
+
+  const handleNumberKeys = (key: string): void => {
     setMemory((prev) => {
-      if (operationActive && overwrite) return { ...prev, num2: value };
-      else if (operationActive) {
-        const num2 = prev.num2 + value;
+      if (operationActive && overwrite) {
+        return { ...prev, num2: key };
+      } else if (operationActive) {
+        const num2 = prev.num2 + key;
         return { ...prev, num2 };
-      } else if (overwrite) return { ...prev, num1: value };
-      else {        
-        const num1 = prev.num1 + value;
+      } else if (overwrite) {
+        return { ...prev, num1: key };
+      } else {
+        const num1 = prev.num1 + key;
         return { ...prev, num1 };
       }
     });
-
     setOverwrite(false);
   };
+  const onKeyDown = (e: any) => {
+    e.preventDefault();
+    const numberKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+    // const operationKeys = ["Enter", "*", "/", "+", "-", "=", "c"];
+    if (numberKeys.includes(e.key)) handleNumberKeys(e.key);
+    // if (operationKeys.includes(e.key)) handleOperationKeys(e.key);
+  };
+  useEffect(() => {
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onKeyDown]);
   return (
     <section className="grid-in-numbers outline outline-1 grid grid-cols-3 grid-rows-4">
       <button
@@ -122,8 +143,10 @@ export const NumberPanel = ({
         value={"."}
         onClick={() => {
           setMemory((prev) => {
-            return prev.index === 1 ? {...prev, num1: prev.num1 + "."} : {...prev, num2: prev.num2 + "."} 
-          })
+            return prev.index === 1
+              ? { ...prev, num1: prev.num1 + "." }
+              : { ...prev, num2: prev.num2 + "." };
+          });
         }}
       >
         .

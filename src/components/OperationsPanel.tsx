@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { add, divide, multiply, subtract } from "../utils/basicOperations";
 type MemoryStateType = {
   num1: string;
@@ -22,14 +22,30 @@ export const OperationsPanel = ({
   operationActive,
 }: SetPropsType): React.JSX.Element => {
   const [operation, setOperation] = useState<string>("");
-
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const target = e.target as HTMLButtonElement;
+  const handleOperationKeys = (key: string) => {
     setOverwrite(true);
-    setOperation(target.value);
+    setOperation(key);
     setMemory((prev) => {
       return { ...prev, index: 2 };
     });
+  };
+
+
+  const onKeyDown = (e: any) => {
+    e.preventDefault();
+    const operationKeys = ["*", "/", "+", "-", "="];
+    if (e.key === "Enter") handleOperationKeys("=")
+    else if (operationKeys.includes(e.key)) handleOperationKeys(e.key);
+  };
+  useEffect(() => {
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onKeyDown]);
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLButtonElement;
+    handleOperationKeys(target.value)
   };
   const handleEquals = () => {
     setOverwrite(true);
