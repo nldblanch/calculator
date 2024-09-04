@@ -101,10 +101,11 @@ export const OperationsPanel = ({
     }
   };
   return (
-    <section className="outline outline-1 col-span-1 grid grid-cols-1">
+    <section className="w-1/4 flex flex-col justify-center flex-wrap py-3 pr-3">
+      <div className="h-1/5 w-full block">
       <button
         className={
-          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-xl flex justify-center transition-colors duration-300" +
+          "bg-orange-500 active:bg-orange-400 w-full rounded-full aspect-square text-xl transition-colors duration-300" +
           (operationActive && operation === "/"
             ? " bg-white text-orange-500"
             : " text-white")
@@ -116,9 +117,11 @@ export const OperationsPanel = ({
       >
         /
       </button>
+      </div>
+      <div className="h-1/5 w-full block">
       <button
         className={
-          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-xl flex justify-center transition-colors duration-300" +
+          "bg-orange-500 active:bg-orange-400 w-full rounded-full aspect-square text-xl transition-colors duration-300" +
           (operationActive && operation === "*"
             ? " bg-white text-orange-500"
             : " text-white ")
@@ -130,9 +133,11 @@ export const OperationsPanel = ({
       >
         x
       </button>
+      </div>
+      <div className="h-1/5 w-full block">
       <button
         className={
-          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-xl flex justify-center transition-colors duration-300" +
+          "bg-orange-500 active:bg-orange-400 w-full rounded-full aspect-square text-xl flex justify-center transition-colors duration-300" +
           (operationActive && operation === "-"
             ? " bg-white text-orange-500"
             : " text-white")
@@ -144,9 +149,11 @@ export const OperationsPanel = ({
       >
         -
       </button>
+      </div>
+      <div className="h-1/5 w-full block">
       <button
         className={
-          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-xl flex justify-center transition-colors duration-300" +
+          "bg-orange-500 active:bg-orange-400 w-full rounded-full aspect-square text-xl flex justify-center transition-colors duration-300" +
           (operationActive && operation === "+"
             ? " bg-white text-orange-500"
             : " text-white")
@@ -158,14 +165,17 @@ export const OperationsPanel = ({
       >
         +
       </button>
+      </div>
+      <div className="h-1/5 w-full block">
       <button
-        className="bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-xl flex justify-center"
+        className="bg-orange-500 active:bg-orange-400 w-full rounded-full aspect-square text-white text-xl flex justify-center"
         type="button"
         value={"="}
         onClick={handleEquals}
       >
         =
       </button>
+      </div>
     </section>
   );
 };

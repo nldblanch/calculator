@@ -72,21 +72,18 @@ function App() {
   };
 
   return (
-    <div className="grid w-full max-w-xs sm:max-w-[200px] max-h-[600px] h-fit">
-      <main className="grid grid-cols-[1fr_minmax(0px,1280px)_1fr] lg:outline lg:outline-1 lg:outline-white bg-zinc-600 content-end sm:content-center">
-        <section className="grid grid-cols-12 col-start-2  content-start">
-          <DisplayPanel {...displayPanelProps} />
-          <div className="col-span-12 grid grid-cols-4 grid-flow-row">
-            <div className="col-span-3 grid grid-cols-1">
-
+    <main className="w-dvw h-dvh max-h-screen flex flex-col lg:outline lg:outline-1 lg:outline-white sm:max-w-md sm:max-h-[75dvh]">
+      <section className="grow w-full">
+        <DisplayPanel {...displayPanelProps} />
+      </section>
+      <div className="flex flex-row">
+        <div className="w-3/4 h-fit">
           <UtilitiesPanel {...utilitiesPanelProps} />
           <NumberPanel {...numberPanelProps} />
-            </div>
-          <OperationsPanel {...operationsPanelProps} />
-          </div>
-        </section>
-      </main>
-    </div>
+        </div>
+        <OperationsPanel {...operationsPanelProps} />
+      </div>
+    </main>
   );
 }
 

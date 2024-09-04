@@ -49,7 +49,7 @@ export const NumberPanel = ({
     if (e.key === ".") setDecimal();
   };
   const setDecimal = () => {
-    setOverwrite(false)
+    setOverwrite(false);
     setMemory((prev) => {
       if (prev.index === 1) {
         if (!prev.num1.includes(".")) {
@@ -60,7 +60,7 @@ export const NumberPanel = ({
           return { ...prev, num2: prev.num2 + "." };
         }
       }
-      return {...prev}
+      return { ...prev };
     });
   };
   useEffect(() => {
@@ -70,95 +70,103 @@ export const NumberPanel = ({
     };
   }, [onKeyDown]);
   return (
-    <section className="outline outline-1 col-span-3 grid grid-cols-3">
-      <button
-        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-xl "
-        type="button"
-        value={7}
-        onClick={handleClick}
-      >
-        7
-      </button>
-      <button
-        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-xl "
-        type="button"
-        value={8}
-        onClick={handleClick}
-      >
-        8
-      </button>
-      <button
-        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-xl "
-        type="button"
-        value={9}
-        onClick={handleClick}
-      >
-        9
-      </button>
-      <button
-        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-xl "
-        type="button"
-        value={4}
-        onClick={handleClick}
-      >
-        4
-      </button>
-      <button
-        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-xl "
-        type="button"
-        value={5}
-        onClick={handleClick}
-      >
-        5
-      </button>
-      <button
-        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-xl "
-        type="button"
-        value={6}
-        onClick={handleClick}
-      >
-        6
-      </button>
-      <button
-        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-xl "
-        type="button"
-        value={1}
-        onClick={handleClick}
-      >
-        1
-      </button>
-      <button
-        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-xl"
-        type="button"
-        value={2}
-        onClick={handleClick}
-      >
-        2
-      </button>
-      <button
-        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-xl"
-        type="button"
-        value={3}
-        onClick={handleClick}
-      >
-        3
-      </button>
-      <button
-        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full col-span-2 aspect-2/1 text-white text-xl"
-        type="button"
-        value={0}
-        onClick={handleClick}
-      >
-        <p className="w-1/2">0</p>
-      </button>
-      <button
-        className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-xl flex justify-center"
-        type="button"
-        value={"."}
-        onClick={setDecimal}
-      >
-        .
-      </button>
+    <section className="w-full flex flex-wrap p-3">
+      <div className="w-full flex flex-row gap-x-3 pb-3">
+        <button
+          className="bg-zinc-700 active:bg-zinc-600 rounded-full aspect-square text-white text-xl w-1/3"
+          type="button"
+          value={7}
+          onClick={handleClick}
+        >
+          7
+        </button>
+        <button
+          className="bg-zinc-700 active:bg-zinc-600 rounded-full aspect-square text-white text-xl w-1/3"
+          type="button"
+          value={8}
+          onClick={handleClick}
+        >
+          8
+        </button>
+        <button
+          className="bg-zinc-700 active:bg-zinc-600 rounded-full aspect-square text-white text-xl w-1/3"
+          type="button"
+          value={9}
+          onClick={handleClick}
+        >
+          9
+        </button>
+      </div>
+      <div className="w-full flex flex-row gap-x-3 pb-3">
+        <button
+          className="bg-zinc-700 active:bg-zinc-600 rounded-full aspect-square text-white text-xl w-1/3"
+          type="button"
+          value={4}
+          onClick={handleClick}
+        >
+          4
+        </button>
+        <button
+          className="bg-zinc-700 active:bg-zinc-600 rounded-full aspect-square text-white text-xl w-1/3"
+          type="button"
+          value={5}
+          onClick={handleClick}
+        >
+          5
+        </button>
+        <button
+          className="bg-zinc-700 active:bg-zinc-600 rounded-full aspect-square text-white text-xl w-1/3"
+          type="button"
+          value={6}
+          onClick={handleClick}
+        >
+          6
+        </button>
+      </div>
+      <div className="w-full flex flex-row gap-x-3 pb-3">
+        <button
+          className="bg-zinc-700 active:bg-zinc-600 rounded-full aspect-square text-white text-xl w-1/3"
+          type="button"
+          value={1}
+          onClick={handleClick}
+        >
+          1
+        </button>
+        <button
+          className="bg-zinc-700 active:bg-zinc-600 rounded-full aspect-square text-white text-xl w-1/3"
+          type="button"
+          value={2}
+          onClick={handleClick}
+        >
+          2
+        </button>
+        <button
+          className="bg-zinc-700 active:bg-zinc-600 rounded-full aspect-square text-white text-xl w-1/3"
+          type="button"
+          value={3}
+          onClick={handleClick}
+        >
+          3
+        </button>
+      </div>
+      <div className="w-full flex flex-row gap-x-3 pb-3">
+        <button
+          className="bg-zinc-700 active:bg-zinc-600 rounded-full aspect-2/1 text-white text-xl grow w-2/3"
+          type="button"
+          value={0}
+          onClick={handleClick}
+        >
+          <p className="w-1/2">0</p>
+        </button>
+        <button
+          className="bg-zinc-700 active:bg-zinc-600 rounded-full aspect-square text-white text-xl flex justify-center w-1/3"
+          type="button"
+          value={"."}
+          onClick={setDecimal}
+        >
+          .
+        </button>
+      </div>
     </section>
   );
 };

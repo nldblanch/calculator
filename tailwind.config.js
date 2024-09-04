@@ -18,22 +18,8 @@ export default {
       aspectRatio: {
         '2/1': '2 / 1',
       },
-      gridTemplateAreas: {
-        'layout': [
-          'output output',
-          'utilities operations',
-          'numbers operations'
-        ],
-      },
-      gridTemplateColumns: {
-        'layout': 'minmax(0, 3fr) minmax(0, 1fr) 50px',
-      },
-      gridTemplateRows: {
-        'layout': `minmax(0, 2.5fr) minmax(0, 1fr) minmax(0, 4fr)`,
-      },
     },
   },
   plugins: [
-    require("@savvywombat/tailwindcss-grid-areas")
   ],
 };
