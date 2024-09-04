@@ -18,7 +18,7 @@ function App() {
   });
   const [overwrite, setOverwrite] = useState<boolean>(true);
   const [operationActive, setOperationActive] = useState<boolean>(false);
-  useEffect(() => {
+  useEffect(() => {    
     setOutput((prev) => prev + ".0");
     const organiseInput = (index: number) => {
       switch (index) {

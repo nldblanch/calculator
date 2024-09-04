@@ -45,9 +45,23 @@ export const NumberPanel = ({
   const onKeyDown = (e: any) => {
     e.preventDefault();
     const numberKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-    // const operationKeys = ["Enter", "*", "/", "+", "-", "=", "c"];
     if (numberKeys.includes(e.key)) handleNumberKeys(e.key);
-    // if (operationKeys.includes(e.key)) handleOperationKeys(e.key);
+    if (e.key === ".") setDecimal();
+  };
+  const setDecimal = () => {
+    setOverwrite(false)
+    setMemory((prev) => {
+      if (prev.index === 1) {
+        if (!prev.num1.includes(".")) {
+          return { ...prev, num1: prev.num1 + "." };
+        }
+      } else {
+        if (!prev.num2.includes(".")) {
+          return { ...prev, num2: prev.num2 + "." };
+        }
+      }
+      return {...prev}
+    });
   };
   useEffect(() => {
     document.addEventListener("keydown", onKeyDown);
@@ -141,13 +155,7 @@ export const NumberPanel = ({
         className="bg-zinc-700 active:bg-zinc-600 m-1 rounded-full aspect-square text-white text-2xl flex justify-center"
         type="button"
         value={"."}
-        onClick={() => {
-          setMemory((prev) => {
-            return prev.index === 1
-              ? { ...prev, num1: prev.num1 + "." }
-              : { ...prev, num2: prev.num2 + "." };
-          });
-        }}
+        onClick={setDecimal}
       >
         .
       </button>
