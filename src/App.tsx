@@ -19,7 +19,6 @@ function App() {
   const [overwrite, setOverwrite] = useState<boolean>(true);
   const [operationActive, setOperationActive] = useState<boolean>(false);
   useEffect(() => {
-    setOutput((prev) => prev + ".0");
     const organiseInput = (index: number) => {
       switch (index) {
         case 1:
@@ -40,11 +39,29 @@ function App() {
     } else if (operationActive && memory.num2 === "NaN") {
       organiseInput(1);
     } else if (operationActive) {
-      organiseInput(2);
+      if (memory.index === 2) {
+        switch (overwrite) {
+          case true:
+            organiseInput(1);
+            break;
+          case false:
+            organiseInput(2);
+            break;
+        }
+      } else {
+        switch (overwrite) {
+          case true:
+            organiseInput(2);
+            break;
+          case false:
+            organiseInput(1);
+            break;
+        }
+      }
     } else {
       organiseInput(1);
     }
-  }, [memory, overwrite]);
+  }, [memory]);
 
   const displayPanelProps = {
     output,
