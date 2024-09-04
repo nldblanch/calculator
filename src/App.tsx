@@ -72,12 +72,21 @@ function App() {
   };
 
   return (
-    <main className="bg-zinc-950 grid grid-areas-layout grid-cols-layout grid-rows-layout grid-flow-row h-dvh w-dvw p-4 pb-8 max-w-lg lg:max-h-[80dvh] lg:outline lg:outline-1 lg:outline-white">
-      <DisplayPanel {...displayPanelProps} />
-      <NumberPanel {...numberPanelProps} />
-      <OperationsPanel {...operationsPanelProps} />
-      <UtilitiesPanel {...utilitiesPanelProps} />
-    </main>
+    <div className="grid w-full max-w-xs sm:max-w-[200px] max-h-[600px] h-fit">
+      <main className="grid grid-cols-[1fr_minmax(0px,1280px)_1fr] lg:outline lg:outline-1 lg:outline-white bg-zinc-600 content-end sm:content-center">
+        <section className="grid grid-cols-12 col-start-2  content-start">
+          <DisplayPanel {...displayPanelProps} />
+          <div className="col-span-12 grid grid-cols-4 grid-flow-row">
+            <div className="col-span-3 grid grid-cols-1">
+
+          <UtilitiesPanel {...utilitiesPanelProps} />
+          <NumberPanel {...numberPanelProps} />
+            </div>
+          <OperationsPanel {...operationsPanelProps} />
+          </div>
+        </section>
+      </main>
+    </div>
   );
 }
 

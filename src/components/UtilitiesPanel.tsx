@@ -54,9 +54,9 @@ export const UtilitiesPanel = ({
   }, [onKeyDown]);
 
   return (
-    <section className="grid-in-utilities outline outline-1 grid grid-flow-row grid-rows-1 grid-cols-3">
+    <section className="outline outline-1 col-span-3 grid grid-cols-3">
       <button
-        className="bg-stone-400 active:bg-stone-300 m-1 rounded-full aspect-square text-black text-2xl"
+        className="bg-stone-400 active:bg-stone-300 m-1 rounded-full aspect-square text-black text-xl"
         type="button"
         value={"C"}
         onClick={clear}
@@ -64,14 +64,14 @@ export const UtilitiesPanel = ({
         C
       </button>
       <button
-        className="bg-stone-400 active:bg-stone-300 m-1 rounded-full aspect-square text-black text-2xl"
+        className="bg-stone-400 active:bg-stone-300 m-1 rounded-full aspect-square text-black text-xl"
         type="button"
         value={"+/-"}
       >
         +/-
       </button>
       <button
-        className="bg-stone-400 active:bg-stone-300 m-1 rounded-full aspect-square text-black text-2xl"
+        className="bg-stone-400 active:bg-stone-300 m-1 rounded-full aspect-square text-black text-xl"
         type="button"
         value={"%"}
         onClick={divideBy100}

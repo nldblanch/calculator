@@ -26,10 +26,10 @@ export default {
         ],
       },
       gridTemplateColumns: {
-        'layout': '6fr 2fr',
+        'layout': 'minmax(0, 3fr) minmax(0, 1fr) 50px',
       },
       gridTemplateRows: {
-        'layout': `5fr 2fr 8fr`,
+        'layout': `minmax(0, 2.5fr) minmax(0, 1fr) minmax(0, 4fr)`,
       },
     },
   },
