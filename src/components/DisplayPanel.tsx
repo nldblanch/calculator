@@ -4,7 +4,6 @@ type SetPropsType = {
   output: string;
 };
 export const DisplayPanel = ({ output }: SetPropsType): React.JSX.Element => {
-  console.log(output, "output in display panel")
   const displayValue: string =
     output === "Error" ? output : formatDisplay(output);
   let style: string =

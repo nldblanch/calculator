@@ -19,8 +19,6 @@ function App() {
   const [overwrite, setOverwrite] = useState<boolean>(true);
   const [operationActive, setOperationActive] = useState<boolean>(false);
   useEffect(() => {
-    // console.log(overwrite)
-    console.log(memory, operationActive);
     setOutput((prev) => prev + ".0");
     const organiseInput = (index: number) => {
       switch (index) {
@@ -72,7 +70,6 @@ function App() {
     setOverwrite,
     setOperationActive,
     memory,
-    output,
   };
 
   return (
