@@ -22,19 +22,22 @@ export const OperationsPanel = ({
   operationActive,
 }: SetPropsType): React.JSX.Element => {
   const [operation, setOperation] = useState<string>("");
-  const handleOperationKeys = (key: string) => {
+  const handleOperationKeys = (key: string):void => {
     setOverwrite(true);
     setOperation(key);
     setMemory((prev) => {
       return { ...prev, index: 2 };
     });
   };
-
+  const handleEqualsKey = (key:string):void => {
+    
+  }
 
   const onKeyDown = (e: any) => {
+    setOperationActive(true)
     e.preventDefault();
-    const operationKeys = ["*", "/", "+", "-", "="];
-    if (e.key === "Enter") handleOperationKeys("=")
+    const operationKeys = ["*", "/", "+", "-"];
+    if (e.key === "Enter" || e.key === "=") handleEquals()
     else if (operationKeys.includes(e.key)) handleOperationKeys(e.key);
   };
   useEffect(() => {
@@ -101,10 +104,10 @@ export const OperationsPanel = ({
     <section className="grid-in-operations outline outline-1 grid grid-flow-col grid-rows-5 grid-cols-1">
       <button
         className={
-          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center transition-colors duration-300" +
+          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-2xl flex justify-center transition-colors duration-300" +
           (operationActive && operation === "/"
             ? " bg-white text-orange-500"
-            : "")
+            : " text-white")
         }
         type="button"
         value={"/"}
@@ -115,10 +118,10 @@ export const OperationsPanel = ({
       </button>
       <button
         className={
-          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center transition-colors duration-300" +
+          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-2xl flex justify-center transition-colors duration-300" +
           (operationActive && operation === "*"
             ? " bg-white text-orange-500"
-            : "")
+            : " text-white ")
         }
         type="button"
         value={"*"}
@@ -129,10 +132,10 @@ export const OperationsPanel = ({
       </button>
       <button
         className={
-          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center transition-colors duration-300" +
+          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-2xl flex justify-center transition-colors duration-300" +
           (operationActive && operation === "-"
             ? " bg-white text-orange-500"
-            : "")
+            : " text-white")
         }
         type="button"
         value={"-"}
@@ -143,10 +146,10 @@ export const OperationsPanel = ({
       </button>
       <button
         className={
-          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-white text-2xl flex justify-center transition-colors duration-300" +
+          "bg-orange-500 active:bg-orange-400 m-1 rounded-full aspect-square text-2xl flex justify-center transition-colors duration-300" +
           (operationActive && operation === "+"
             ? " bg-white text-orange-500"
-            : "")
+            : " text-white")
         }
         type="button"
         value={"+"}
