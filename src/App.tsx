@@ -72,7 +72,7 @@ function App() {
   };
 
   return (
-    <main className="w-dvw h-dvh max-h-screen flex flex-col lg:outline lg:outline-1 lg:outline-white sm:max-w-md sm:max-h-[75dvh]">
+    <main className="w-dvw h-dvh max-h-screen flex flex-col lg:border-solid lg:border-2 lg:border-white lg:overflow-hidden sm:max-w-md sm:max-h-[80dvh]">
       <section className="grow w-full">
         <DisplayPanel {...displayPanelProps} />
       </section>
