@@ -18,7 +18,7 @@ function App() {
   });
   const [overwrite, setOverwrite] = useState<boolean>(true);
   const [operationActive, setOperationActive] = useState<boolean>(false);
-  useEffect(() => {    
+  useEffect(() => {
     setOutput((prev) => prev + ".0");
     const organiseInput = (index: number) => {
       switch (index) {
@@ -44,7 +44,6 @@ function App() {
     } else {
       organiseInput(1);
     }
-    
   }, [memory, overwrite]);
 
   const displayPanelProps = {
@@ -73,9 +72,7 @@ function App() {
   };
 
   return (
-    <main
-      className="bg-zinc-950 grid grid-areas-layout grid-cols-layout grid-rows-layout grid-flow-row h-dvh w-dvw p-4 pb-8"
-    >
+    <main className="bg-zinc-950 grid grid-areas-layout grid-cols-layout grid-rows-layout grid-flow-row h-dvh w-dvw p-4 pb-8 max-w-lg lg:max-h-[80dvh] lg:outline lg:outline-1 lg:outline-white">
       <DisplayPanel {...displayPanelProps} />
       <NumberPanel {...numberPanelProps} />
       <OperationsPanel {...operationsPanelProps} />
