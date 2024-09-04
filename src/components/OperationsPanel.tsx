@@ -29,9 +29,6 @@ export const OperationsPanel = ({
       return { ...prev, index: 2 };
     });
   };
-  const handleEqualsKey = (key:string):void => {
-    
-  }
 
   const onKeyDown = (e: any) => {
     setOperationActive(true)
