@@ -47,6 +47,7 @@ export const OperationsPanel = ({
     };
   }, [onKeyDown]);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setOperationActive(true)
     const target = e.target as HTMLButtonElement;
     handleOperationKeys(target.value);
   };
@@ -113,7 +114,6 @@ export const OperationsPanel = ({
         type="button"
         value={"/"}
         onClick={handleClick}
-        onFocus={() => setOperationActive(true)}
       >
         /
       </button>
@@ -129,7 +129,6 @@ export const OperationsPanel = ({
         type="button"
         value={"*"}
         onClick={handleClick}
-        onFocus={() => setOperationActive(true)}
       >
         x
       </button>
@@ -145,7 +144,6 @@ export const OperationsPanel = ({
         type="button"
         value={"-"}
         onClick={handleClick}
-        onFocus={() => setOperationActive(true)}
       >
         -
       </button>
@@ -161,7 +159,6 @@ export const OperationsPanel = ({
         type="button"
         value={"+"}
         onClick={handleClick}
-        onFocus={() => setOperationActive(true)}
       >
         +
       </button>
