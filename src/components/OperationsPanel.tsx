@@ -22,7 +22,7 @@ export const OperationsPanel = ({
   operationActive,
 }: SetPropsType): React.JSX.Element => {
   const [operation, setOperation] = useState<string>("");
-  const handleOperationKeys = (key: string):void => {
+  const handleOperationKeys = (key: string): void => {
     setOverwrite(true);
     setOperation(key);
     setMemory((prev) => {
@@ -31,11 +31,14 @@ export const OperationsPanel = ({
   };
 
   const onKeyDown = (e: any) => {
-    setOperationActive(true)
     e.preventDefault();
     const operationKeys = ["*", "/", "+", "-"];
-    if (e.key === "Enter" || e.key === "=") handleEquals()
-    else if (operationKeys.includes(e.key)) handleOperationKeys(e.key);
+    if (e.key === "Enter" || e.key === "=") {
+      handleEquals();
+    } else if (operationKeys.includes(e.key)) {
+      setOperationActive(true);
+      handleOperationKeys(e.key);
+    }
   };
   useEffect(() => {
     document.addEventListener("keydown", onKeyDown);
@@ -45,7 +48,7 @@ export const OperationsPanel = ({
   }, [onKeyDown]);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
-    handleOperationKeys(target.value)
+    handleOperationKeys(target.value);
   };
   const handleEquals = () => {
     setOverwrite(true);
