@@ -126,8 +126,8 @@ _For more examples, please refer to the [Documentation](https://github.com/nldbl
 
 ### Top contributors:
 
-<a href="https://github.com/nldblanch/calculator/graphs/contributors">
-  <img src="https://avatars.githubusercontent.com/u/37803149?s=400&u=56db75909abd6e999cb4ce82a80090ce6f0a632e&v=4" alt="contrib.rocks image" />
+<a href = "https://github.com/nldblanch/calculator/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo = nldblanch/calculator"/>
 </a>
 
 ## Acknowledgments
