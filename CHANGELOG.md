@@ -14,3 +14,14 @@
 ### Miscellaneous
 
 - General code changes and maintenance.
+
+## [v1.1.0] - 2024-06-26
+
+### Changed
+
+- Refactored state management for improved maintainability and scalability.
+- Updated related UI logic to integrate with new state management approach.
+
+### Added
+
+- Introduced `CalculatorContext.tsx` for centralized state handling.
