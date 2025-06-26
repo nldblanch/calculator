@@ -1,145 +1,102 @@
-<a id="readme-top"></a>
+# Calculator App
 
-[![Contributors][contributors-shield]][contributors-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-<a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="typescript logo" /></a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="javascript logo"></a> <a href="https://react.dev"><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="react logo" /></a> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="html logo"/></a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="css logo"/></a> <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="tailwind logo" /></a> 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-<h1>Calculator</h1>
-  <h2 align="center">IOS Emulation</h2>
-  <p align="center">
-    <br />
-    <a href="https://github.com/nldblanch/calculator"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://nb-calculator.netlify.app">View Demo</a>
-    ·
-    <a href="https://github.com/nldblanch/calculator/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/nldblanch/calculator/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
-  </p>
-</div>
+A simple, modern calculator built with React, TypeScript, Vite, and Tailwind CSS. This project demonstrates clean code structure, component-based design, and thorough testing with Jest.
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#hosting">Hosting</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+## Features
 
-<!-- ABOUT THE PROJECT -->
+- Basic arithmetic operations (add, subtract, multiply, divide)
+- Responsive and accessible UI
+- Modular, reusable React components
+- Context-based state management
+- Utility functions for operations and display formatting
+- Comprehensive unit tests
 
-## About The Project
+## Tech Stack
 
-![Calculator Screenshot][product-screenshot]
-
-This mini app is:
-
-- An emulation of the classic IOS calculator on mobile and desktop
-- Built in TypeScript
-- Made at a basic level with room for future expansion
-
-### Built With
-<a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="typescript logo" /></a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="javascript logo"></a> <a href="https://react.dev"><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="react logo" /></a> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="html logo"/></a> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="css logo"/></a> <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="tailwind logo" /></a> 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
+- **React** (with TypeScript)
+- **Vite** (for fast development and build)
+- **Tailwind CSS** (for styling)
+- **Jest** (for testing)
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
+- Node.js (v16 or higher recommended)
+- npm or yarn
 
 ### Installation
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/nldblanch/calculator.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-
-3. Change git remote url to avoid accidental pushes to base project
-   ```sh
-   git remote set-url origin github_username/repo_name
-   git remote -v # confirm the changes
-   ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Hosting
-
-It's very easy to get this site running on your local machine. Simply run
-```js
-npm run dev
+```bash
+git clone <repository-url>
+cd calculator
+npm install # or yarn install
 ```
-But how about your own hosted website?
 
-#### 1. Sign up for Netlify 
+### Running the App
 
-There are many ways to host a website, but we used Netlify. Create yourself an account and connect your GitHub profile.
+```bash
+npm run dev # or yarn dev
+```
 
-#### 2. Add a new site
+The app will be available at `http://localhost:5173` by default.
 
-Once you have done that, navigate to the Sites tab and click Add new site. Import an existing project - your GitHub project you just created! Everything will be setup already - most importantly though, check the branch is 'main' and the build command is npm run build.
+### Building for Production
 
-#### 3. Deploy
+```bash
+npm run build # or yarn build
+```
 
-Deploy your project and wait for it to finish building. That's it! You're done. You have your own site, and you can redeploy it any time you make changes. Alternatively, you can modify the settings of your Netlify site to deploy every time you push changes to your GitHub Main branch. If you do, make sure you make use of branching in Git to avoid pushing anything that could break your live site!
+### Preview Production Build
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+```bash
+npm run preview # or yarn preview
+```
 
 ## Usage
 
-Try playing around with the calculator. See if you can find any ways in which it doesn't respond how you think it might, then you can have a go at fixing it yourself, or alternatively you can [report a bug](https://github.com/nldblanch/calculator/issues/new?labels=bug&template=bug-report---.md).
+- Click the number and operation buttons to perform calculations.
+- The display panel shows the current input and result.
+- Utilities panel may include clear, backspace, or other functions.
 
-_For more examples, please refer to the [Documentation](https://github.com/nldblanch/calculator)_
+## Testing
 
-### Top contributors:
+Run all tests with:
 
-<a href="https://github.com/nldblanch/calculator/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=nldlanch/calculator" alt="contrib.rocks image" />
-</a>
+```bash
+npm test # or yarn test
+```
 
-## Acknowledgments
+Test files are located in the `__tests__` directory and cover core logic and components.
 
-- [Apple][apple-url]
+## Project Structure
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+```
+calculator/
+├── __tests__/              # Unit tests
+├── public/                 # Static assets
+├── src/
+│   ├── components/         # React components
+│   ├── utils/              # Utility functions (operations, formatting)
+│   ├── App.tsx             # Main app component
+│   └── main.tsx            # Entry point
+├── index.html              # HTML template
+├── tailwind.config.js      # Tailwind CSS config
+├── vite.config.ts          # Vite config
+├── package.json            # Project metadata and scripts
+└── README.md               # Project documentation
+```
 
-<!-- MARKDOWN LINKS & IMAGES -->
-[apple-url]: https://www.apple.com
-[contributors-shield]: https://img.shields.io/github/contributors/nldblanch/calculator.svg?style=for-the-badge
-[contributors-url]: https://github.com/nldblanch/calculator/graphs/contributors
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/nathanblanch
-[product-screenshot]: https://github.com/user-attachments/assets/9187ab60-19e8-48a1-a2ba-051c4b77dfd4
+## Contributing
+
+Contributions are welcome! Please open issues or submit pull requests for improvements and bug fixes.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/YourFeature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/YourFeature`)
+5. Open a pull request
+
+## License
+
+[MIT](LICENSE)

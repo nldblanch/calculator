@@ -1,31 +1,15 @@
 import { useEffect } from "react";
+import { useCalculator } from "./CalculatorContext";
 
-type MemoryStateType = {
-  num1: string;
-  num2: string;
-  index: number;
-};
-type SetPropsType = {
-  setOutput: React.Dispatch<React.SetStateAction<string>>;
-  setMemory: React.Dispatch<React.SetStateAction<MemoryStateType>>;
-  setOverwrite: React.Dispatch<React.SetStateAction<boolean>>;
-  setOperationActive: React.Dispatch<React.SetStateAction<boolean>>;
-  memory: MemoryStateType;
-};
+export const UtilitiesPanel = (): React.JSX.Element => {
+  const { setOutput, setMemory, setOverwrite, setOperationActive, memory } = useCalculator();
 
-export const UtilitiesPanel = ({
-  setOutput,
-  setMemory,
-  setOverwrite,
-  setOperationActive,
-  memory,
-}: SetPropsType): React.JSX.Element => {
   const onKeyDown = (e: any) => {
     e.preventDefault();
     const utilitiesKeys = ["c", "%"];
     if (utilitiesKeys.includes(e.key)) {
-      if (e.key === "c") clear()
-      if (e.key === "%") divideBy100()
+      if (e.key === "c") clear();
+      if (e.key === "%") divideBy100();
     }
   };
   const clear = () => {
@@ -35,7 +19,7 @@ export const UtilitiesPanel = ({
     setOperationActive(false);
   };
   const divideBy100 = () => {
-    const {num1, num2, index} = memory
+    const { num1, num2, index } = memory;
     if (index === 1) {
       setMemory((prev) => {
         return { ...prev, num1: String(Number(num1) / 100) };
@@ -45,7 +29,7 @@ export const UtilitiesPanel = ({
         return { ...prev, num2: String(Number(num2) / 100) };
       });
     }
-  }
+  };
   useEffect(() => {
     document.addEventListener("keydown", onKeyDown);
     return () => {

@@ -1,26 +1,9 @@
 import { useEffect, useState } from "react";
 import { add, divide, multiply, subtract } from "../utils/basicOperations";
-type MemoryStateType = {
-  num1: string;
-  num2: string;
-  index: number;
-};
-type SetPropsType = {
-  setOutput: React.Dispatch<React.SetStateAction<string>>;
-  setMemory: React.Dispatch<React.SetStateAction<MemoryStateType>>;
-  setOverwrite: React.Dispatch<React.SetStateAction<boolean>>;
-  setOperationActive: React.Dispatch<React.SetStateAction<boolean>>;
-  memory: MemoryStateType;
-  operationActive: boolean;
-};
-export const OperationsPanel = ({
-  setOutput,
-  setMemory,
-  setOverwrite,
-  memory,
-  setOperationActive,
-  operationActive,
-}: SetPropsType): React.JSX.Element => {
+import { useCalculator } from "./CalculatorContext";
+
+export const OperationsPanel = (): React.JSX.Element => {
+  const { setOutput, setMemory, setOverwrite, setOperationActive, memory, operationActive, setError } = useCalculator();
   const [operation, setOperation] = useState<string>("");
   const handleOperationKeys = (key: string): void => {
     setOverwrite(true);
@@ -28,6 +11,7 @@ export const OperationsPanel = ({
     setMemory((prev) => {
       return { ...prev, index: 2 };
     });
+    setError(false);
   };
 
   const onKeyDown = (e: any) => {
@@ -47,7 +31,7 @@ export const OperationsPanel = ({
     };
   }, [onKeyDown]);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setOperationActive(true)
+    setOperationActive(true);
     const target = e.target as HTMLButtonElement;
     handleOperationKeys(target.value);
   };
@@ -58,46 +42,48 @@ export const OperationsPanel = ({
     switch (operation) {
       case "+":
         setMemory((prev) => {
-          if (memory.num2 === "NaN") return { ...prev };
           return {
             ...prev,
             num1: String(add(Number(num1), Number(num2))),
             index: 1,
           };
         });
+        setError(false);
         break;
       case "-":
         setMemory((prev) => {
-          if (memory.num2 === "NaN") return { ...prev };
           return {
             ...prev,
             num1: String(subtract(Number(num1), Number(num2))),
             index: 1,
           };
         });
+        setError(false);
         break;
       case "/":
-        if (num2 === "0") setOutput("Error");
-        else {
+        if (num2 === "0") {
+          setOutput("Error");
+          setError(true);
+        } else {
           setMemory((prev) => {
-            if (memory.num2 === "NaN") return { ...prev };
             return {
               ...prev,
               num1: String(divide(Number(num1), Number(num2))),
               index: 1,
             };
           });
+          setError(false);
         }
         break;
       case "*":
         setMemory((prev) => {
-          if (memory.num2 === "NaN") return { ...prev };
           return {
             ...prev,
             num1: String(multiply(Number(num1), Number(num2))),
             index: 1,
           };
         });
+        setError(false);
         break;
     }
   };

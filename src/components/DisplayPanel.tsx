@@ -1,9 +1,8 @@
 import { formatDisplay } from "../utils/displayFormatter";
+import { useCalculator } from "./CalculatorContext";
 
-type SetPropsType = {
-  output: string;
-};
-export const DisplayPanel = ({ output }: SetPropsType): React.JSX.Element => {
+export const DisplayPanel = (): React.JSX.Element => {
+  const { output } = useCalculator();
   const displayValue: string =
     output === "Error" ? output : formatDisplay(output);
   let style: string =

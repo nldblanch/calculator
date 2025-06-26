@@ -1,24 +1,9 @@
 import { useEffect } from "react";
+import { useCalculator } from "./CalculatorContext";
 
-type MemoryStateType = {
-  num1: string;
-  num2: string;
-  index: number;
-};
+export const NumberPanel = (): React.JSX.Element => {
+  const { overwrite, setOverwrite, setMemory, operationActive, error, setError, setOutput } = useCalculator();
 
-type SetPropsType = {
-  setOverwrite: React.Dispatch<React.SetStateAction<boolean>>;
-  setMemory: React.Dispatch<React.SetStateAction<MemoryStateType>>;
-  overwrite: boolean;
-  operationActive: boolean;
-};
-
-export const NumberPanel = ({
-  overwrite,
-  setOverwrite,
-  setMemory,
-  operationActive,
-}: SetPropsType): React.JSX.Element => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
     const value = target.value || "0";
@@ -27,11 +12,18 @@ export const NumberPanel = ({
   };
 
   const handleNumberKeys = (key: string): void => {
+    if (error) {
+      setError(false);
+      setOutput(key);
+      setMemory((prev) => ({ ...prev, num1: key, num2: null, index: 1 }));
+      setOverwrite(false);
+      return;
+    }
     setMemory((prev) => {
       if (operationActive && overwrite) {
         return { ...prev, num2: key };
       } else if (operationActive) {
-        const num2 = prev.num2 + key;
+        const num2 = (prev.num2 ?? "") + key;
         return { ...prev, num2 };
       } else if (overwrite) {
         return { ...prev, num1: key };
@@ -43,6 +35,7 @@ export const NumberPanel = ({
     setOverwrite(false);
   };
   const onKeyDown = (e: any) => {
+    console.log("Ive been pressed")
     e.preventDefault();
     const numberKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
     if (numberKeys.includes(e.key)) handleNumberKeys(e.key);
